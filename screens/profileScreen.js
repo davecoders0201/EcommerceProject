@@ -61,7 +61,12 @@ const ProfileScreen = ({navigation}) => {
         </View>
       </LinearGradient>
       <View style={styles.orderCont}>
-        <Text style={styles.orderText}>Your Orders</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.orderText}>Your Orders</Text>
+          <Text style={styles.seeall} onPress={() => {}}>
+            See all
+          </Text>
+        </View>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {OrderData.map(data => (
             <OrderCard image={data.image} />
@@ -131,11 +136,21 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingBottom: 10,
   },
+  textContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
   orderText: {
     fontWeight: 'bold',
     fontSize: 20,
     color: 'black',
     marginBottom: 15,
+  },
+  seeall: {
+    padding: 5,
+    color: 'green',
+    fontSize: 16,
   },
   logoutbtn: {
     flex: 1,
