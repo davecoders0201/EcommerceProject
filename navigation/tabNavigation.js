@@ -1,12 +1,10 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import CartScreen from '../screens/cartScreen';
 import MenuScreen from '../screens/menuScreen';
 import HomeScreen from '../screens/homeScreen';
 import ProfileScreen from '../screens/profileScreen';
-import Register from '../screens/register';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const TabNavigation = () => {
