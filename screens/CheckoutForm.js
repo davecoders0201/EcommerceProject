@@ -1,7 +1,7 @@
 import React from 'react';
 import {CardField, useStripe} from '@stripe/stripe-react-native';
 import axios from 'axios';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 const CheckoutForm = () => {
   const {stripe, confirmPayment} = useStripe(); // change 'stripe' to 'useStripe()'
@@ -57,11 +57,27 @@ const CheckoutForm = () => {
           console.log('focusField', focusedField);
         }}
       />
-      <TouchableOpacity onPress={handleSubmit}>
-        <Text>Pay</Text>
+      <TouchableOpacity onPress={handleSubmit} style={styles.payContainer}>
+        <Text style={styles.payText}>Pay</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
 export default CheckoutForm;
+
+const styles = StyleSheet.create({
+  payContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    borderRadius: 10,
+  },
+  payText: {
+    fontFamily: 'bold',
+    padding: 10,
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+});
