@@ -9,28 +9,39 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
+
+// This is use to import the firebase auth service
 import auth from '@react-native-firebase/auth';
 
 const Login = ({navigation}) => {
+  // This is the useEffect in the function which is executed evert time when the screen is navigated
   useEffect(() => {
     navigation.setOptions({
       headerTitle: 'Login',
     });
   }, [navigation]);
 
+  // this is the useState which is use to edit the state
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [seePassword, setSeePassword] = useState(true);
   const secondTextInput = useRef();
+
+  // This is the signIn Function which is executed when the signIn button is clicked
   const signIn = async () => {
+    // This if is use to check wheather the email is properly written or not
     if (!email.trim()) {
       alert('Please enter your email');
       return;
     }
+
+    // This if is use to check the password is entered or not by the user
     if (!password.trim()) {
       alert('Please enter your password');
       return;
     }
+
+    // This is use to when the email and password is completely written in proper format
     if (email && password) {
       console.log(email, password);
       try {
@@ -51,11 +62,13 @@ const Login = ({navigation}) => {
     }
   };
   return (
+    // This is the Scroll View which is use to give the Scroll Environment to the Content
     <ScrollView>
       <View style={styles.login}>
         <StatusBar barStyle="light-content" />
         <View style={styles.loginHeader}>
           <TouchableOpacity>
+            {/* ------This is use for the Logo------ */}
             <Image
               style={styles.loginImage}
               source={{
@@ -64,6 +77,8 @@ const Login = ({navigation}) => {
             />
           </TouchableOpacity>
         </View>
+
+        {/*------This is View is use for the Form-------*/}
         <View style={styles.loginForm}>
           <View
             style={{
@@ -81,6 +96,7 @@ const Login = ({navigation}) => {
             </Text>
           </View>
 
+          {/* ---This is the Container of the Email in the login form--- */}
           <View style={styles.loginInputContaineremail}>
             <TextInput
               value={email}
@@ -93,6 +109,7 @@ const Login = ({navigation}) => {
               }></TextInput>
           </View>
 
+          {/* ---This is the Container of the Email in the login form--- */}
           <View style={styles.loginInputContainerpass}>
             <TextInput
               ref={secondTextInput}
@@ -102,6 +119,8 @@ const Login = ({navigation}) => {
               style={styles.loginInputPassword}
               placeholder="Your Password"
             />
+
+            {/* ---This is the button of the icon in which the password is shown or hidden--- */}
             <TouchableOpacity
               style={styles.wrapperIcon}
               onPress={() => setSeePassword(!seePassword)}>
@@ -116,6 +135,7 @@ const Login = ({navigation}) => {
             </TouchableOpacity>
           </View>
 
+          {/* --- This is the Button of the signIn which is use for Authnticate the User and Run a Function --- */}
           <TouchableOpacity onPress={signIn} style={styles.loginSignInButton}>
             <Text style={{color: '#111', textAlign: 'center'}}>Sign in</Text>
           </TouchableOpacity>
@@ -130,6 +150,8 @@ const Login = ({navigation}) => {
             Please see our Privacy Notice, our Cookies Notice and our
             Interest-Based Ads Notice.
           </Text>
+
+          {/* --- This is the Register Button in the User Create a Account --- */}
           <TouchableOpacity
             onPress={() => navigation.navigate('Register')}
             style={styles.loginRegisterButton}>
@@ -137,6 +159,8 @@ const Login = ({navigation}) => {
               Create your Amazon Account
             </Text>
           </TouchableOpacity>
+
+          {/* --- This is the Coninue Shopping Button --- */}
           <TouchableOpacity>
             <Text
               style={styles.loginFormLink}
@@ -161,6 +185,7 @@ const Login = ({navigation}) => {
 
 export default Login;
 
+// This is the Stylesheet in the File like CSS and it is added below the File by importing the Stylesheet
 const styles = StyleSheet.create({
   login: {
     display: 'flex',

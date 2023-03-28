@@ -5,8 +5,9 @@ import {View, Text, TouchableOpacity} from 'react-native';
 
 const CheckoutForm = () => {
   const {stripe, confirmPayment} = useStripe(); // change 'stripe' to 'useStripe()'
-  const handleSubmit = async event => {
 
+  // This is the handleSubmit Function
+  const handleSubmit = async event => {
     if (!error) {
       console.log('Stripe 23 | token generated!', paymentMethod);
       try {
@@ -31,10 +32,10 @@ const CheckoutForm = () => {
   };
   return (
     <View>
-      {/* <TouchableOpacity onPress={handleSubmit}>
+      <TouchableOpacity onPress={handleSubmit}>
         <CardField style={{border: '1px solid black'}} />
         <Text>Pay</Text>
-      </TouchableOpacity> */}
+      </TouchableOpacity>
       <CardField
         postalCodeEnabled={false}
         placeholders={{

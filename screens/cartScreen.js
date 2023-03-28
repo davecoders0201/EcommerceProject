@@ -12,13 +12,16 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CartItem from './../components/cartItem';
 
 import {useSelector} from 'react-redux';
-import { useStripe } from '@stripe/stripe-react-native';
+import {useStripe} from '@stripe/stripe-react-native';
 
+// This is the main Function of the CartScreen and it is executed in every decent manner
 const CartScreen = ({navigation}) => {
   const items = useSelector(state => state);
   const [quantity, setQuantity] = useState(1);
   const [subtotal, setSubtotal] = useState(0);
   console.log(items);
+
+  // This is the useEffect and executed when the page is diplayed
   useEffect(() => {
     navigation.setOptions({
       headerTitle: '',
@@ -41,17 +44,19 @@ const CartScreen = ({navigation}) => {
     });
   });
 
+  // This is the Second useEffect which is executed the User increase the Count of the Products
   useEffect(() => {
     let total = 0;
-    items.forEach((item) => {
+    items.forEach(item => {
       total += item.price;
     });
     setSubtotal(total);
   });
 
-  console.log("Items", items);
+  console.log('Items', items);
   console.log(subtotal);
   return (
+    // This is the main Container in the File
     <View style={styles.container}>
       <View style={styles.subCont}>
         <Text style={styles.titleText}>subtotal</Text>
@@ -69,10 +74,15 @@ const CartScreen = ({navigation}) => {
       </View>
       <View style={styles.buyBtn}>
         <Pressable style={styles.btnCont}>
-          <Text style={styles.btnText} onPress={() => navigation.navigate('PaymentScreen')}>Proceed to buy (2 items)</Text>
+          <Text
+            style={styles.btnText}
+            onPress={() => navigation.navigate('PaymentScreen')}>
+            Proceed to buy (2 items)
+          </Text>
         </Pressable>
       </View>
       <ScrollView>
+        {/* --- This is the Map function which is use to display the Items one by one --- */}
         {items.map(item => (
           <CartItem
             key={item.id}
@@ -81,7 +91,6 @@ const CartScreen = ({navigation}) => {
             img={item.img}
           />
         ))}
-
       </ScrollView>
     </View>
   );
@@ -89,6 +98,7 @@ const CartScreen = ({navigation}) => {
 
 export default CartScreen;
 
+// This is the StyleSheet which is use for giving styles to the page
 const styles = StyleSheet.create({
   maincontainer: {
     backgroundColor: '#8bebf2',

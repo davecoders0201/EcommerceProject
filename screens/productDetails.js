@@ -13,16 +13,21 @@ import {smartWatchesData} from './../data/smartWatchesData';
 import RatingStars from '../components/ratingStars';
 import SmartWatchSlider from '../components/smartWatchSlider';
 import {ScrollView} from 'react-native-gesture-handler';
+import {SliderBox} from 'react-native-image-slider-box';
+
+// This is the main Function of the file
 const ProductDetails = ({route, navigation}) => {
   const id = route.params.productId; // get the item object passed from the previous screen
 
   console.log('item:', id);
 
+  // This is find function which is use to find the data according to the id 
   const selectedProduct = smartWatchesData.find(element => {
     console.log(element);
     return id === element.id;
   });
 
+  // This is the dipatch which uses a useDispatch when the cart products are added this will add the product in the store
   const dispatch = useDispatch();
 
   const addItem = selectedProduct => {
@@ -33,10 +38,14 @@ const ProductDetails = ({route, navigation}) => {
   console.log(id);
   // console.log('smartWatchesData:', smartWatchesData);
   return (
+    // This is the ScrollView Content which give the Scroll Effect to the Content
     <ScrollView>
+      {/* This is the Main Container in the File  */}
       <View style={styles.container}>
+        {/* ---This is the Smart watch slider which diplay the images in the Array--- */}
         <SmartWatchSlider />
         <View style={styles.infoContainer}>
+          {/* The Content is comming from the previous id  */}
           <Text style={styles.title}>{selectedProduct.title}</Text>
           <Text style={styles.price}>${selectedProduct.price}</Text>
           <View style={styles.stars}>
@@ -64,6 +73,7 @@ const ProductDetails = ({route, navigation}) => {
 
 export default ProductDetails;
 
+// This is the StyleSheet which is use to give the style sheet 
 const styles = StyleSheet.create({
   container: {
     flex: 1,

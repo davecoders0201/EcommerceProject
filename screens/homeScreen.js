@@ -17,14 +17,15 @@ import CategoryCard from '../components/categoryCard';
 import CarouselCard from '../components/carouselCard';
 import DealCard from './../components/dealCard';
 import {categoryData} from '../data/CarouselData';
-import ProductDetails from './productDetails';
-import ProductList from './productList';
 
+// This is the main HomeScreen Function in the File
 const HomeScreen = ({navigation}) => {
+  // this is the useEffect which is executed when the page navigated everyTime
   useEffect(() => {
     navigation.setOptions({
       headerTitle: '',
       header: () => (
+        // This is the header part which is diplayed under the page when it is navigated
         <SafeAreaView style={styles.maincontainer}>
           <View style={styles.searchcontainer}>
             <Icon name="magnify" color={'gray'} size={20} />
@@ -44,12 +45,14 @@ const HomeScreen = ({navigation}) => {
   });
 
   return (
+    // This is the ScrollView which is use to give scroll effect to the Content in the File
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.Address}>
         <DeliveryAddressCard />
       </View>
       <CarouselCard />
 
+      {/* ---This is the title of the products categories--- */}
       <View>
         <Text style={styles.dealText}> Deals of the Day!</Text>
       </View>
@@ -57,16 +60,19 @@ const HomeScreen = ({navigation}) => {
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         style={styles.categorycontainer}>
+        {/* ---This is the Map function Which is use to map the data from the Static API created in the data Folder--- */}
         {categoryData.map(dat => (
           <CategoryCard img={dat.img} text={dat.text} />
         ))}
       </ScrollView>
 
+      {/* ---This is the title of the products categories--- */}
       <View>
         <Text style={styles.dealText}> Electronic devices for sale</Text>
       </View>
 
       <View style={styles.dealItemCont}>
+        {/* ---This is the Map function Which is use to map the data from the Static API created in the data Folder--- */}
         {devicesDealData.map((item, index) => (
           <TouchableOpacity
             onPress={() =>
@@ -77,12 +83,15 @@ const HomeScreen = ({navigation}) => {
         ))}
       </View>
 
+      {/* ---This is the title of the products categories--- */}
+
       <View>
         <Text style={styles.dealText}>
           {' '}
           Up to 60% off | Tools & home improvement
         </Text>
         <View style={styles.dealItemCont}>
+          {/* ---This is the Map function Which is use to map the data from the Static API created in the data Folder--- */}
           {dealData.map(data => (
             <DealCard img={data.img} text={data.text} />
           ))}
@@ -92,6 +101,7 @@ const HomeScreen = ({navigation}) => {
   );
 };
 
+// This is the Style sheet which is use to give styles to the page
 export default HomeScreen;
 
 const styles = StyleSheet.create({

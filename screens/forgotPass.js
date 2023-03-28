@@ -11,9 +11,12 @@ import {
 
 //this is the main Forgot password Function which is Export in next page
 const ForgotPass = () => {
+  // This is the useState to change the state in the file
   const [checkValidEmail, setCheckValidEmail] = useState(false);
   const [email, setEmail] = useState('');
   const emailRemove = useRef(null);
+
+  // This function is use for to Validate the Email using the Regex
   const validateEmail = text => {
     let re = /\S+@\S+\.\S+/;
     let regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
@@ -25,6 +28,7 @@ const ForgotPass = () => {
     }
   };
 
+  // This is use to check the email is entered or not
   const forgetPassword = email => {
     if (!email) {
       alert('Enter Email');
@@ -43,8 +47,11 @@ const ForgotPass = () => {
     }
   };
 
+  // This is the main Return Function
   return (
+    // ---This is the Main View Container ---
     <View style={styles.mainContainer}>
+      {/* --- This is the Logo --- */}
       <Image
         source={{
           uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png',
@@ -61,12 +68,14 @@ const ForgotPass = () => {
         />
       </View>
 
+      {/* This is the Check Validate email Condition which is use to check the Email  */}
       {checkValidEmail ? (
         <Text style={styles.textFailed}>Please Enter Proper Email</Text>
       ) : (
         <Text style={styles.blockText}> </Text>
       )}
 
+      {/* ---This is the Submit Button--- */}
       <TouchableOpacity
         style={[styles.buttonStyle]}
         onPress={() => forgetPassword(email)}>
@@ -78,6 +87,7 @@ const ForgotPass = () => {
 
 export default ForgotPass;
 
+// This is the Stylesheet which is use to give the Style to the Page
 const styles = StyleSheet.create({
   container: {
     flex: 1,

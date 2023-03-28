@@ -13,7 +13,9 @@ import {menuData} from '../data/MenuData';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MenuItemCard from '../components/menuItemCard';
 
+// This is the Main Function in the file
 const MenuScreen = ({navigation}) => {
+  // This is the useEffect Function which is executed when the screen is Visible or navigated
   useEffect(() => {
     navigation.setOptions({
       headerTitle: '',
@@ -38,8 +40,10 @@ const MenuScreen = ({navigation}) => {
 
   return (
     <ScrollView style={styles.container}>
+      {/* ---This is the Linear Gradient and it is use to give the shade---  */}
       <LinearGradient colors={['rgba(5,250,242,0.4)', '#fff']}>
         <View style={styles.itemCont}>
+          {/* This is the Map function which is use to map the data from the different file which is in the data folder  */}
           {menuData.map(dat => (
             <MenuItemCard title={dat.text} img={dat.img} />
           ))}
@@ -51,6 +55,7 @@ const MenuScreen = ({navigation}) => {
 
 export default MenuScreen;
 
+// This is the StyleSheet in the File which is use to give the Styles to the file
 const styles = StyleSheet.create({
   maincontainer: {
     backgroundColor: '#8bebf2',
