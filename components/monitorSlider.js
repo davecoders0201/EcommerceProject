@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import React from 'react';
 import {SliderBox} from 'react-native-image-slider-box';
-import { monitorSliderData } from '../data/monitorSliderData';
+import {monitorSliderData} from '../data/monitorSliderData';
 const MonitorSlider = () => {
   return (
     <View>
@@ -29,9 +29,9 @@ const MonitorSlider = () => {
 export default MonitorSlider;
 
 const styles = StyleSheet.create({
-    image: {
-        width: '100%',
-        height: 300,
-        resizeMode: 'contain',
-      },
+  image: {
+    width: '100%',
+    height: 300,
+    resizeMode: 'contain',
+  },
 });

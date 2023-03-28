@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import React from 'react';
 import {SliderBox} from 'react-native-image-slider-box';
-import { LaptopSliderData } from '../data/LaptopSliderData';
+import {LaptopSliderData} from '../data/LaptopSliderData';
 const LaptopSlider = () => {
   return (
     <View>
@@ -29,9 +29,9 @@ const LaptopSlider = () => {
 export default LaptopSlider;
 
 const styles = StyleSheet.create({
-    image: {
-        width: '100%',
-        height: 300,
-        resizeMode: 'contain',
-      },
+  image: {
+    width: '100%',
+    height: 300,
+    resizeMode: 'contain',
+  },
 });

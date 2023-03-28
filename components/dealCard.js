@@ -1,44 +1,41 @@
-import { StyleSheet, Text, View,Image, Dimensions } from 'react-native'
-import React from 'react'
+import {StyleSheet, Text, View, Image, Dimensions} from 'react-native';
+import React from 'react';
 
-let dimension = (Dimensions.get("window").width);
-const DealCard = ({text,img}) => {
+let dimension = Dimensions.get('window').width;
+const DealCard = ({text, img}) => {
   return (
     <View style={styles.container}>
       <View style={styles.dealItem}>
-      <Image
-        source={{uri:img}}
-        style={styles.dealImage}
-      />
-      <Text style={styles.dealheading}>{text}</Text>
+        <Image source={{uri: img}} style={styles.dealImage} />
+        <Text style={styles.dealheading}>{text}</Text>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default DealCard
+export default DealCard;
 
 const styles = StyleSheet.create({
-  container:{
-    padding:15,
-    paddingTop:0,
-    overflow:"hidden"
+  container: {
+    padding: 15,
+    paddingTop: 0,
+    overflow: 'hidden',
   },
-  dealImage:{
-    height:100,
-    resizeMode:"contain"
+  dealImage: {
+    height: 100,
+    resizeMode: 'contain',
   },
-  dealText:{
-    fontSize:20,
-    fontWeight:"bold",
-    marginBottom:20
+  dealText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
-  dealItem:{
-    width:(dimension/2)-45,
-    marginBottom:5
-},
-dealheading:{
-    fontWeight:"bold",
-    fontSize:16,
-}
-})
+  dealItem: {
+    width: dimension / 2 - 45,
+    marginBottom: 5,
+  },
+  dealheading: {
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+});

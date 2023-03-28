@@ -1,5 +1,12 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+  ScrollView,
+} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {addItemToCart} from './../redux/action/Actions';
 import {tabletsData} from './../data/tabletsData';

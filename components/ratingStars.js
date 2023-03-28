@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const RatingStars = ({ rating }) => {
+const RatingStars = ({rating}) => {
   const stars = [];
 
   for (let i = 1; i <= 5; i++) {

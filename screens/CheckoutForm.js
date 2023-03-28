@@ -36,7 +36,7 @@ const CheckoutForm = () => {
         <Text>Pay</Text>
       </TouchableOpacity> */}
       <CardField
-        postalCodeEnabled={true}
+        postalCodeEnabled={false}
         placeholders={{
           number: '4242 4242 4242 4242',
         }}

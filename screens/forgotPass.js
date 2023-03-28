@@ -31,19 +31,16 @@ const ForgotPass = () => {
       return;
     }
     emailRemove.current.clear();
-    try{
-        if(auth){
-            alert('Email sent SuccessFully');
-            return auth().sendPasswordResetEmail(email);
-        }
-        else{
-        return
-        }
+    try {
+      if (auth) {
+        alert('Email sent SuccessFully');
+        return auth().sendPasswordResetEmail(email);
+      } else {
+        return;
+      }
+    } catch (error) {
+      alert(error);
     }
-    catch(error){
-        alert(error)
-    }
-    
   };
 
   return (

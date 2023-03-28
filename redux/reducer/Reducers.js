@@ -1,5 +1,5 @@
 import {ADD_ITEM, REMOVE_ITEM} from './../ActionTypes';
-export const Reducers = (state =[], action) => {
+export const Reducers = (state = [], action) => {
   switch (action.type) {
     case ADD_ITEM: {
       return [...state, action.payload];

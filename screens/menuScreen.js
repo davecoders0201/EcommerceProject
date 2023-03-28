@@ -5,7 +5,7 @@ import {
   TextInput,
   SafeAreaView,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import React, {useEffect} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
@@ -14,7 +14,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MenuItemCard from '../components/menuItemCard';
 
 const MenuScreen = ({navigation}) => {
-
   useEffect(() => {
     navigation.setOptions({
       headerTitle: '',
@@ -45,7 +44,6 @@ const MenuScreen = ({navigation}) => {
             <MenuItemCard title={dat.text} img={dat.img} />
           ))}
         </View>
-        
       </LinearGradient>
     </ScrollView>
   );
@@ -94,18 +92,18 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
   },
-  logoutbtn:{
+  logoutbtn: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:'#8bebf2',
-    borderRadius:10,
-    paddingLeft:10,
+    backgroundColor: '#8bebf2',
+    borderRadius: 10,
+    paddingLeft: 10,
   },
-  logoutText:{
-    fontSize:20,
-    paddingLeft:10,
-    color:"black",
-    fontWeight:"bold",
-  }
+  logoutText: {
+    fontSize: 20,
+    paddingLeft: 10,
+    color: 'black',
+    fontWeight: 'bold',
+  },
 });

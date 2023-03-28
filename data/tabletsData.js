@@ -11,7 +11,7 @@ export const tabletsData = [
     id: '2',
     title: 'Tablet 2',
     img: 'https://m.media-amazon.com/images/I/71mdoicpqWL._AC_SL1500_.jpg',
-    price:12999,
+    price: 12999,
     description: 'This is the Best Tablet in the Segment',
 
     rating: '2',

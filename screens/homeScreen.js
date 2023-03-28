@@ -67,8 +67,11 @@ const HomeScreen = ({navigation}) => {
       </View>
 
       <View style={styles.dealItemCont}>
-        {devicesDealData.map((item,index) => (
-          <TouchableOpacity onPress={() => navigation.navigate('ProductList', {productId : index})}>
+        {devicesDealData.map((item, index) => (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('ProductList', {productId: index})
+            }>
             <DealCard img={item.img} text={item.title} />
           </TouchableOpacity>
         ))}

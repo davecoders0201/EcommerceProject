@@ -1,10 +1,17 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Alert, ScrollView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+  ScrollView,
+} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {addItemToCart} from './../redux/action/Actions';
 import RatingStars from '../components/ratingStars';
-import { LaptopData } from '../data/laptopData';
-import { LaptopSliderData } from '../data/LaptopSliderData';
+import {LaptopData} from '../data/laptopData';
+import {LaptopSliderData} from '../data/LaptopSliderData';
 import LaptopSlider from '../components/laptopSlider';
 
 const ProductDetailsLaptop = ({route, navigation}) => {

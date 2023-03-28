@@ -1,4 +1,11 @@
-import {StyleSheet, Text, View, ScrollView, Image, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useEffect} from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -48,7 +55,7 @@ const ProfileScreen = ({navigation}) => {
           />
         </View>
         <View style={styles.actionCont}>
-          {infoData.map(data =>(
+          {infoData.map(data => (
             <ProfileCard title={data.title} />
           ))}
         </View>
@@ -56,8 +63,8 @@ const ProfileScreen = ({navigation}) => {
       <View style={styles.orderCont}>
         <Text style={styles.orderText}>Your Orders</Text>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {OrderData.map(data=>(
-            <OrderCard image={data.image}/>
+          {OrderData.map(data => (
+            <OrderCard image={data.image} />
           ))}
         </ScrollView>
       </View>
@@ -65,27 +72,25 @@ const ProfileScreen = ({navigation}) => {
       <View style={styles.orderCont}>
         <Text style={styles.orderText}>Your Wishlist</Text>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {WishListData.map(data=>(
-            <OrderCard image={data.image}/>
-          ))
-
-          }
+          {WishListData.map(data => (
+            <OrderCard image={data.image} />
+          ))}
         </ScrollView>
       </View>
 
       <View style={styles.orderCont}>
         <Text style={styles.orderText}>Your Account</Text>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {accountData.map(data=>(
-            <AccountCard title={data.title}/>
+          {accountData.map(data => (
+            <AccountCard title={data.title} />
           ))}
         </ScrollView>
       </View>
       <View style={styles.logoutbtn}>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text style={styles.logoutText}>Logout</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.logoutText}>Logout</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
@@ -132,21 +137,20 @@ const styles = StyleSheet.create({
     color: 'black',
     marginBottom: 15,
   },
-  logoutbtn:{
+  logoutbtn: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:'#8bebf2',
-    borderRadius:10,
+    backgroundColor: '#8bebf2',
+    borderRadius: 10,
     // paddingLeft:10,
-    marginTop:10,
-    borderColor:"black",
-  
+    marginTop: 10,
+    borderColor: 'black',
   },
-  logoutText:{
-    fontSize:20,
-    paddingLeft:10,
-    color:"black",
-    fontWeight:"bold",
-  }
+  logoutText: {
+    fontSize: 20,
+    paddingLeft: 10,
+    color: 'black',
+    fontWeight: 'bold',
+  },
 });

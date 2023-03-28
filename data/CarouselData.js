@@ -28,8 +28,8 @@ export const dealData = [
 export const devicesDealData = [
   {
     id: '1',
-    title: "Smartwatches & fitness trackers",
-    img: "https://images-eu.ssl-images-amazon.com/images/G/31/img21/PC/Computers/GW/DBQC/D21343116_IN_CEPC_BAU_GW_graphics_March21_dbqc0.5x_5._SY116_CB655805757_.jpg",
+    title: 'Smartwatches & fitness trackers',
+    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img21/PC/Computers/GW/DBQC/D21343116_IN_CEPC_BAU_GW_graphics_March21_dbqc0.5x_5._SY116_CB655805757_.jpg',
     description:
       'This is the Smart watch with the feature of the mobile Connectivity.',
 
@@ -37,8 +37,8 @@ export const devicesDealData = [
   },
   {
     id: '2',
-    title: "Tablets",
-    img: "https://images-eu.ssl-images-amazon.com/images/G/31/img21/PC/Computers/GW/DBQC/D21343116_IN_CEPC_BAU_GW_graphics_March21_dbqc0.5x_6._SY116_CB655805757_.jpg",
+    title: 'Tablets',
+    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img21/PC/Computers/GW/DBQC/D21343116_IN_CEPC_BAU_GW_graphics_March21_dbqc0.5x_6._SY116_CB655805757_.jpg',
     description:
       'This is the Tablet which is the 8 core Processor in the Tablet',
 
@@ -46,16 +46,15 @@ export const devicesDealData = [
   },
   {
     id: '3',
-    title: "Laptops",
-    img: "https://images-eu.ssl-images-amazon.com/images/G/31/img21/PC/Computers/GW/DBQC/D21343116_IN_CEPC_BAU_GW_graphics_March21_dbqc0.5x_7._SY116_CB655805757_.jpg",
-    description:
-      'This is the laptop with the Felxible Functionality',
+    title: 'Laptops',
+    img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img21/PC/Computers/GW/DBQC/D21343116_IN_CEPC_BAU_GW_graphics_March21_dbqc0.5x_7._SY116_CB655805757_.jpg',
+    description: 'This is the laptop with the Felxible Functionality',
 
     price: 1000,
   },
   {
     id: '4',
-    title: "Monitors",
+    title: 'Monitors',
     img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img21/PC/Computers/GW/DBQC/D21343116_IN_CEPC_BAU_GW_graphics_March21_dbqc0.5x_8._SY116_CB655805757_.jpg',
     description:
       'This is the Monitors which are wirellesly connnected to the CPU',

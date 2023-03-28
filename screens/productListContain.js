@@ -1,9 +1,16 @@
-import {StyleSheet, Text, View, Image, Pressable,ScrollView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import RatingStars from '../components/ratingStars';
 
-const ProductListContain = ({img,title,price,rating,navigation}) => {
+const ProductListContain = ({img, title, price, rating, navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.topCont}>
@@ -23,7 +30,7 @@ const ProductListContain = ({img,title,price,rating,navigation}) => {
         </View>
         <View style={styles.contentCont}>
           <Text style={styles.itemTitleText}>{title}</Text>
-          <RatingStars rating={rating}/>
+          <RatingStars rating={rating} />
           <Text style={styles.priceText}>₹{price}</Text>
         </View>
       </View>
@@ -38,7 +45,7 @@ const styles = StyleSheet.create({
     borderBottomColor: 'white',
     borderBottomWidth: 10,
     backgroundColor: '#ededed',
-    padding:15,
+    padding: 15,
   },
   topCont: {
     flex: 1,
@@ -58,7 +65,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: 'black',
     fontWeight: 'bold',
-    marginBottom:10,
+    marginBottom: 10,
   },
   priceText: {
     flex: 1,
