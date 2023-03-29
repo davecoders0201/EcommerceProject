@@ -79,20 +79,9 @@ const Login = ({navigation}) => {
       .then(Response => Response.json())
       .then(data => {
         console.log(data);
-        // navigation.navigate('TabNavigation');
+        navigation.navigate('TabNavigation');
       });
   };
-
-  // async function fetchUserDetails() {
-  //   const loginResponse = await axios.post(
-  //     process.env.REACT_APP_API_KEY + 'login',
-  //     {
-  //       email: email,
-  //       password: password,
-  //     },
-  //   );
-  //   console.log('Login Response', loginResponse.data.error_code);
-  // }
 
   return (
     // This is the Scroll View which is use to give the Scroll Environment to the Content
