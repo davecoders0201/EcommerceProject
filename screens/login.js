@@ -11,7 +11,8 @@ import {
 } from 'react-native';
 
 // This is use to import the firebase auth service
-import auth from '@react-native-firebase/auth';
+// import auth from '@react-native-firebase/auth';
+// import {data} from '../data/CarouselData';
 
 const Login = ({navigation}) => {
   // This is the useEffect in the function which is executed evert time when the screen is navigated
@@ -27,40 +28,69 @@ const Login = ({navigation}) => {
   const [seePassword, setSeePassword] = useState(true);
   const secondTextInput = useRef();
 
-  // This is the signIn Function which is executed when the signIn button is clicked
-  const signIn = async () => {
-    // This if is use to check wheather the email is properly written or not
-    if (!email.trim()) {
-      alert('Please enter your email');
-      return;
-    }
+  // This is the signIn Function which is executed when the signIn button is clicked using Firebase.
 
-    // This if is use to check the password is entered or not by the user
-    if (!password.trim()) {
-      alert('Please enter your password');
-      return;
-    }
+  // const signIn = async () => {
+  //   // This if is use to check wheather the email is properly written or not
+  //   if (!email.trim()) {
+  //     alert('Please enter your email');
+  //     return;
+  //   }
 
-    // This is use to when the email and password is completely written in proper format
-    if (email && password) {
-      console.log(email, password);
-      try {
-        const isUserLogin = await auth().signInWithEmailAndPassword(
-          email,
-          password,
-        );
-        if (isUserLogin) {
-          navigation.navigate('TabNavigation');
-        }
-      } catch (error) {
-        console.log(error);
-        alert(error);
-        // Handle the error here
-      }
-    } else {
-      warning('Amazon Clone Sign In', 'Input Badly Formatted 😢');
-    }
+  //   // This if is use to check the password is entered or not by the user
+  //   if (!password.trim()) {
+  //     alert('Please enter your password');
+  //     return;
+  //   }
+
+  //   // This is use to when the email and password is completely written in proper format
+  //   if (email && password) {
+  //     console.log(email, password);
+  //     try {
+  //       const isUserLogin = await auth().signInWithEmailAndPassword(
+  //         email,
+  //         password,
+  //       );
+  //       if (isUserLogin) {
+  //         navigation.navigate('TabNavigation');
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //       alert(error);
+  //       // Handle the error here
+  //     }
+  //   } else {
+  //     warning('Amazon Clone Sign In', 'Input Badly Formatted 😢');
+  //   }
+  // };
+
+  // This is the Function which is use to login the User Using the Backend (NodeJs).
+  const sendCred = () => {
+    fetch('http://10.0.2.2:3000/ecommerce/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then(Response => Response.json())
+      .then(data => {
+        console.log(data);
+        navigation.navigate('TabNavigation');
+      });
   };
+
+  // async function fetchUserDetails() {
+  //   const loginResponse = await axios.post(
+  //     process.env.REACT_APP_API_KEY + 'login',
+  //     {
+  //       email: email,
+  //       password: password,
+  //     },
+  //   );
+  //   console.log('Login Response', loginResponse.data.error_code);
+  // }
+
   return (
     // This is the Scroll View which is use to give the Scroll Environment to the Content
     <ScrollView>
@@ -136,7 +166,7 @@ const Login = ({navigation}) => {
           </View>
 
           {/* --- This is the Button of the signIn which is use for Authnticate the User and Run a Function --- */}
-          <TouchableOpacity onPress={signIn} style={styles.loginSignInButton}>
+          <TouchableOpacity onPress={sendCred} style={styles.loginSignInButton}>
             <Text style={{color: '#111', textAlign: 'center'}}>Sign in</Text>
           </TouchableOpacity>
           <Text

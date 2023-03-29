@@ -5,13 +5,13 @@ import {
   View,
   StatusBar,
   Image,
-  Alert,
   TextInput,
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import auth from '@react-native-firebase/auth';
+// import auth from '@react-native-firebase/auth';
+import axios from 'axios';
 
 const Register = ({navigation}) => {
   useEffect(() => {
@@ -27,25 +27,48 @@ const Register = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [reEnterPassword, setRePassword] = useState('');
 
-  const register = async () => {
-    if (email && password) {
-      console.log(email, password);
-      try {
-        const isUserCreated = await auth().createUserWithEmailAndPassword(
-          email,
-          password,
-        );
-        if (isUserCreated) {
-          Alert.alert('Successfuly Created User');
-        }
-      } catch (error) {
-        console.log(error);
-        alert(error);
-        // Handle the error here
-      }
-    } else {
-      warning('Amazon Clone Sign In', 'Input Badly Formatted 😢');
-    }
+  //This is use to create account using the Firebase
+
+  // const register = async () => {
+  //   if (email && password) {
+  //     console.log(email, password);
+  //     try {
+  //       const isUserCreated = await auth().createUserWithEmailAndPassword(
+  //         email,
+  //         password,
+  //       );
+  //       if (isUserCreated) {
+  //         Alert.alert('Successfuly Created User');
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //       alert(error);
+  //       // Handle the error here
+  //     }
+  //   } else {
+  //     warning('Amazon Clone Sign In', 'Input Badly Formatted 😢');
+  //   }
+  // };
+
+  // This is use for creating account using the Backend (NodeJs).
+  const sendCred = () => {
+    fetch('http://10.0.2.2:3000/ecommerce/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // token: token,
+      },
+      body: JSON.stringify({
+        your_name: name,
+        email: email,
+        password: password,
+        reenter_password: reEnterPassword,
+      }),
+    })
+      .then(Response => Response.json())
+      .then(data => {
+        console.log(data);
+      });
   };
 
   return (
@@ -118,7 +141,7 @@ const Register = ({navigation}) => {
               style={styles.loginInputPassword}
             />
           </View>
-          <TouchableOpacity onPress={register} style={styles.loginSignInButton}>
+          <TouchableOpacity onPress={sendCred} style={styles.loginSignInButton}>
             <Text style={{color: '#111', textAlign: 'center'}}>
               Create account
             </Text>
