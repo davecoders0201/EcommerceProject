@@ -4,8 +4,6 @@ import {
   View,
   TextInput,
   SafeAreaView,
-  Text,
-  TouchableOpacity,
 } from 'react-native';
 import React, {useEffect} from 'react';
 import LinearGradient from 'react-native-linear-gradient';

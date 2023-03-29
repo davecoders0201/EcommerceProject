@@ -1,5 +1,5 @@
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import ProductListContain from './productListContain';
 import {smartWatchesData} from './../data/smartWatchesData';
 import {ScrollView} from 'react-native-gesture-handler';

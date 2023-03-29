@@ -10,7 +10,6 @@ import React, {useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CartItem from './../components/cartItem';
-
 import {useSelector} from 'react-redux';
 import {useStripe} from '@stripe/stripe-react-native';
 
@@ -68,7 +67,7 @@ const CartScreen = ({navigation}) => {
         </View>
         <View>
           <Text style={styles.deliveryText}>
-            Your order is eleigible for FREE delivery
+            Your order is eligible for FREE delivery
           </Text>
         </View>
       </View>
@@ -174,5 +173,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 5,
   },
-  btnText: {},
 });

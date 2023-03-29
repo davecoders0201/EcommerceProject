@@ -4,12 +4,10 @@ import {
   View,
   ScrollView,
   TextInput,
-  Image,
   SafeAreaView,
   TouchableOpacity,
-  FlatList,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {dealData, devicesDealData} from '../data/CarouselData';
 import DeliveryAddressCard from '../components/deliveryAddressCard';

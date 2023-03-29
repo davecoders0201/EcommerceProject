@@ -1,13 +1,5 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Pressable,
-  ScrollView,
-} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import RatingStars from '../components/ratingStars';
 
 const ProductListContain = ({img, title, price, rating, navigation}) => {

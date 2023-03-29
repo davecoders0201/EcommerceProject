@@ -11,7 +11,6 @@ import {useDispatch} from 'react-redux';
 import {addItemToCart} from './../redux/action/Actions';
 import RatingStars from '../components/ratingStars';
 import {LaptopData} from '../data/laptopData';
-import {LaptopSliderData} from '../data/LaptopSliderData';
 import LaptopSlider from '../components/laptopSlider';
 
 const ProductDetailsLaptop = ({route, navigation}) => {
@@ -32,7 +31,6 @@ const ProductDetailsLaptop = ({route, navigation}) => {
   };
 
   console.log(id);
-  // console.log('smartWatchesData:', smartWatchesData);
   return (
     <ScrollView>
       <View style={styles.container}>

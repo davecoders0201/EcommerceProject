@@ -5,6 +5,7 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  Pressable,
 } from 'react-native';
 import React, {useEffect} from 'react';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -12,6 +13,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import ProfileCard from '../components/profileCard';
 import OrderCard from '../components/orderCard';
 import AccountCard from '../components/accountCard';
+import orderScreen from './orderScreen';
 import {
   accountData,
   infoData,
@@ -47,12 +49,7 @@ const ProfileScreen = ({navigation}) => {
       <LinearGradient colors={['rgba(5,250,242,0.4)', '#fff']}>
         <View style={styles.titleCont}>
           <Text style={styles.titleText}>Hello, TechAvidus</Text>
-          <Icon
-            name="account-circle"
-            color={'#b0b0b0'}
-            size={50}
-            // backgroundColor="white"
-          />
+          <Icon name="account-circle" color={'#b0b0b0'} size={50} />
         </View>
         <View style={styles.actionCont}>
           {infoData.map(data => (
@@ -63,7 +60,9 @@ const ProfileScreen = ({navigation}) => {
       <View style={styles.orderCont}>
         <View style={styles.textContainer}>
           <Text style={styles.orderText}>Your Orders</Text>
-          <Text style={styles.seeall} onPress={() => {}}>
+          <Text
+            style={styles.seeall}
+            onPress={() => navigation.navigate('OrderScreen')}>
             See all
           </Text>
         </View>

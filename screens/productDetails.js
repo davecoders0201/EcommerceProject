@@ -1,9 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  Image,
   TouchableOpacity,
   Alert,
 } from 'react-native';
@@ -13,7 +12,6 @@ import {smartWatchesData} from './../data/smartWatchesData';
 import RatingStars from '../components/ratingStars';
 import SmartWatchSlider from '../components/smartWatchSlider';
 import {ScrollView} from 'react-native-gesture-handler';
-import {SliderBox} from 'react-native-image-slider-box';
 
 // This is the main Function of the file
 const ProductDetails = ({route, navigation}) => {
@@ -36,7 +34,6 @@ const ProductDetails = ({route, navigation}) => {
   };
 
   console.log(id);
-  // console.log('smartWatchesData:', smartWatchesData);
   return (
     // This is the ScrollView Content which give the Scroll Effect to the Content
     <ScrollView>
@@ -93,7 +90,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 10,
     color: 'black',
-    // flex:3,
   },
   price: {
     fontSize: 25,
@@ -107,7 +103,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   stars: {
-    // marginTop: -10,
     marginBottom: 20,
   },
   button: {
