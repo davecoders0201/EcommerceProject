@@ -1,4 +1,3 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import CartScreen from '../screens/cartScreen';
@@ -6,6 +5,7 @@ import MenuScreen from '../screens/menuScreen';
 import HomeScreen from '../screens/homeScreen';
 import ProfileScreen from '../screens/profileScreen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import OrderScreen from './../screens/orderScreen';
 
 const TabNavigation = () => {
   const Tab = createBottomTabNavigator();
@@ -57,5 +57,3 @@ const TabNavigation = () => {
 };
 
 export default TabNavigation;
-
-const styles = StyleSheet.create({});

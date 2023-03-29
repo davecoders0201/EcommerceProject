@@ -76,7 +76,6 @@ const Register = ({navigation}) => {
           <Text style={styles.loginFormLink}>Your Name</Text>
           <View style={styles.loginInputContainer}>
             <TextInput
-              // value={email}
               onChangeText={name => setName(name)}
               style={styles.loginInputText}
               returnKeyType={'next'}
@@ -87,9 +86,7 @@ const Register = ({navigation}) => {
           <View style={styles.loginInputContainer}>
             <TextInput
               ref={secondTextInput}
-              // value={password}
               onChangeText={email => setEmail(email)}
-              // secureTextEntry={true}
               style={styles.loginInputPassword}
             />
           </View>
@@ -97,7 +94,6 @@ const Register = ({navigation}) => {
           <View style={styles.loginInputContainer}>
             <TextInput
               ref={secondTextInput}
-              // value={password}
               onChangeText={password => setPassword(password)}
               secureTextEntry={true}
               style={styles.loginInputPassword}
@@ -182,7 +178,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   loginFormLink: {
-    // textAlign: 'center',
     fontSize: 18,
     color: 'black',
     fontWeight: 'bold',
@@ -205,9 +200,6 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingLeft: 14,
     fontSize: 17,
-    // borderBottomColor: '#ccc',
-    // borderBottomWidth: 1,
-    // marginBottom:15,
   },
   loginInputPassword: {
     padding: 10,

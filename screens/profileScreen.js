@@ -13,7 +13,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import ProfileCard from '../components/profileCard';
 import OrderCard from '../components/orderCard';
 import AccountCard from '../components/accountCard';
-import orderScreen from './orderScreen';
 import {
   accountData,
   infoData,
@@ -62,7 +61,7 @@ const ProfileScreen = ({navigation}) => {
           <Text style={styles.orderText}>Your Orders</Text>
           <Text
             style={styles.seeall}
-            onPress={() => navigation.navigate('OrderScreen')}>
+            onPress={() => {navigation.navigate('OrderScreen')}}>
             See all
           </Text>
         </View>
@@ -147,7 +146,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   seeall: {
-    padding: 5,
+    paddingTop: 5,
+    paddingRight:10,
     color: 'green',
     fontSize: 16,
   },
