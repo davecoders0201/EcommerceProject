@@ -68,6 +68,9 @@ const Login = ({navigation}) => {
   const sendCred = () => {
     fetch('http://10.0.2.2:3000/ecommerce/login', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         email: email,
         password: password,
@@ -76,7 +79,7 @@ const Login = ({navigation}) => {
       .then(Response => Response.json())
       .then(data => {
         console.log(data);
-        navigation.navigate('TabNavigation');
+        // navigation.navigate('TabNavigation');
       });
   };
 

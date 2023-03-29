@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
+  KeyboardAvoidingView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // import auth from '@react-native-firebase/auth';
@@ -69,104 +70,108 @@ const Register = ({navigation}) => {
       .then(Response => Response.json())
       .then(data => {
         console.log(data);
-        Alert.alert("User Created, please go Ahead to Login");
+        Alert.alert('User Created, please go Ahead to Login');
       });
   };
 
   return (
-    <ScrollView>
-      <View style={styles.login}>
-        <StatusBar barStyle="light-content" />
-        <View style={styles.loginHeader}>
-          <TouchableOpacity>
-            <Image
-              style={styles.loginImage}
-              source={{
-                uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png',
-              }}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.loginForm}>
-          <View
-            style={{
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
-            <Text style={styles.loginFormTitle}>Create Account</Text>
+    <KeyboardAvoidingView>
+      <ScrollView>
+        <View style={styles.login}>
+          <StatusBar barStyle="light-content" />
+          <View style={styles.loginHeader}>
+            <TouchableOpacity>
+              <Image
+                style={styles.loginImage}
+                source={{
+                  uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png',
+                }}
+              />
+            </TouchableOpacity>
           </View>
-          <Text style={styles.loginFormLink}>Your Name</Text>
-          <View style={styles.loginInputContainer}>
-            <TextInput
-              onChangeText={name => setName(name)}
-              style={styles.loginInputText}
-              returnKeyType={'next'}
-              onSubmitEditing={() => secondTextInput.current.focus()}
-            />
-          </View>
-          <Text style={styles.loginFormLink}>Email</Text>
-          <View style={styles.loginInputContainer}>
-            <TextInput
-              ref={secondTextInput}
-              onChangeText={email => setEmail(email)}
-              style={styles.loginInputPassword}
-            />
-          </View>
-          <Text style={styles.loginFormLink}>Password</Text>
-          <View style={styles.loginInputContainer}>
-            <TextInput
-              ref={secondTextInput}
-              onChangeText={password => setPassword(password)}
-              secureTextEntry={true}
-              style={styles.loginInputPassword}
-              placeholder="At least 6 characters"
-            />
-          </View>
-          <Text style={styles.validationpass}>
-            <Icon
-              name="information-variant"
-              size={20}
-              color={'#4eb6df'}
-              style={styles.icon}></Icon>
-            Password must be atleast 6 characters
-          </Text>
-          <Text style={styles.loginFormLink}>Re-enter password</Text>
-          <View style={styles.loginInputContainer}>
-            <TextInput
-              ref={secondTextInput}
-              // value={password}
-              onChangeText={reEnterPassword => setRePassword(reEnterPassword)}
-              secureTextEntry={true}
-              style={styles.loginInputPassword}
-            />
-          </View>
-          <TouchableOpacity onPress={sendCred} style={styles.loginSignInButton}>
-            <Text style={{color: '#111', textAlign: 'center'}}>
-              Create account
+          <View style={styles.loginForm}>
+            <View
+              style={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}>
+              <Text style={styles.loginFormTitle}>Create Account</Text>
+            </View>
+            <Text style={styles.loginFormLink}>Your Name</Text>
+            <View style={styles.loginInputContainer}>
+              <TextInput
+                onChangeText={name => setName(name)}
+                style={styles.loginInputText}
+                returnKeyType={'next'}
+                onSubmitEditing={() => secondTextInput.current.focus()}
+              />
+            </View>
+            <Text style={styles.loginFormLink}>Email</Text>
+            <View style={styles.loginInputContainer}>
+              <TextInput
+                ref={secondTextInput}
+                onChangeText={email => setEmail(email)}
+                style={styles.loginInputPassword}
+              />
+            </View>
+            <Text style={styles.loginFormLink}>Password</Text>
+            <View style={styles.loginInputContainer}>
+              <TextInput
+                ref={secondTextInput}
+                onChangeText={password => setPassword(password)}
+                secureTextEntry={true}
+                style={styles.loginInputPassword}
+                placeholder="At least 6 characters"
+              />
+            </View>
+            <Text style={styles.validationpass}>
+              <Icon
+                name="information-variant"
+                size={20}
+                color={'#4eb6df'}
+                style={styles.icon}></Icon>
+              Password must be atleast 6 characters
             </Text>
-          </TouchableOpacity>
-        </View>
-        <Text
-          style={{
-            paddingTop: 30,
-            color: 'black',
-            marginTop: 30,
-            textAlign: 'left',
-            marginLeft: -150,
-            fontSize: 15,
-          }}>
-          Already have an account ?{' '}
+            <Text style={styles.loginFormLink}>Re-enter password</Text>
+            <View style={styles.loginInputContainer}>
+              <TextInput
+                ref={secondTextInput}
+                // value={password}
+                onChangeText={reEnterPassword => setRePassword(reEnterPassword)}
+                secureTextEntry={true}
+                style={styles.loginInputPassword}
+              />
+            </View>
+            <TouchableOpacity
+              onPress={sendCred}
+              style={styles.loginSignInButton}>
+              <Text style={{color: '#111', textAlign: 'center'}}>
+                Create account
+              </Text>
+            </TouchableOpacity>
+          </View>
           <Text
-            style={styles.signIn}
-            onPress={() => navigation.navigate('Login')}>
-            signIn
+            style={{
+              paddingTop: 30,
+              color: 'black',
+              marginTop: 30,
+              textAlign: 'left',
+              marginLeft: -150,
+              fontSize: 15,
+            }}>
+            Already have an account ?{' '}
+            <Text
+              style={styles.signIn}
+              onPress={() => navigation.navigate('Login')}>
+              signIn
+            </Text>
           </Text>
-        </Text>
-      </View>
-    </ScrollView>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
