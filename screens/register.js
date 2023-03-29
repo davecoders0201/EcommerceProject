@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // import auth from '@react-native-firebase/auth';
@@ -68,6 +69,7 @@ const Register = ({navigation}) => {
       .then(Response => Response.json())
       .then(data => {
         console.log(data);
+        Alert.alert("User Created, please go Ahead to Login");
       });
   };
 
