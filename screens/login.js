@@ -79,7 +79,7 @@ const Login = ({navigation}) => {
       .then(Response => Response.json())
       .then(data => {
         console.log(data);
-        navigation.navigate('TabNavigation');
+        // navigation.navigate('TabNavigation');
       });
   };
 
