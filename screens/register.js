@@ -30,7 +30,6 @@ const Register = ({navigation}) => {
   const [reEnterPassword, setRePassword] = useState('');
 
   //This is use to create account using the Firebase
-
   // const register = async () => {
   //   if (email && password) {
   //     console.log(email, password);
@@ -52,27 +51,41 @@ const Register = ({navigation}) => {
   //   }
   // };
 
-  // This is use for creating account using the Backend (NodeJs).
-  const sendCred = () => {
-    fetch('http://10.0.2.2:3000/ecommerce/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // token: token,
-      },
-      body: JSON.stringify({
+  // This is use for creating account using the Backend (NodeJs) using the Fetch API .
+  // const sendCred = () => {
+  //   fetch('http://10.0.2.2:3000/ecommerce/register', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       // token: token,
+  //     },
+  //     body: JSON.stringify({
+  //       your_name: name,
+  //       email: email,
+  //       password: password,
+  //       reenter_password: reEnterPassword,
+  //     }),
+  //   })
+  //     .then(Response => Response.json())
+  //     .then(data => {
+  //       console.log(data);
+  //       Alert.alert('User Created, please go Ahead to Login');
+  //     });
+  // };
+
+  // This function is use to save the register data in the database using the axios in the node Js
+  async function fetchUserDetails() {
+    const userResponse = await axios.post(
+      'http://10.0.2.2:3000/ecommerce/register',
+      {
         your_name: name,
         email: email,
         password: password,
         reenter_password: reEnterPassword,
-      }),
-    })
-      .then(Response => Response.json())
-      .then(data => {
-        console.log(data);
-        Alert.alert('User Created, please go Ahead to Login');
-      });
-  };
+      },
+    );
+    console.log('Register User', userResponse.data.result);
+  }
 
   return (
     <KeyboardAvoidingView>
@@ -146,7 +159,7 @@ const Register = ({navigation}) => {
               />
             </View>
             <TouchableOpacity
-              onPress={sendCred}
+              onPress={fetchUserDetails}
               style={styles.loginSignInButton}>
               <Text style={{color: '#111', textAlign: 'center'}}>
                 Create account
