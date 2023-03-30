@@ -1,4 +1,4 @@
-import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import ProductListContain from './productListContain';
 import {smartWatchesData} from './../data/smartWatchesData';
