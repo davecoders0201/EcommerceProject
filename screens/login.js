@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
+import axios from 'axios';
 
 // This is use to import the firebase auth service
 // import auth from '@react-native-firebase/auth';
@@ -64,24 +65,36 @@ const Login = ({navigation}) => {
   //   }
   // };
 
-  // This is the Function which is use to login the User Using the Backend (NodeJs).
-  const sendCred = () => {
-    fetch('http://10.0.2.2:3000/ecommerce/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+  // This is the Function which is use to login the User Using the Backend (NodeJs) and using the fetch API.
+  // const sendCred = () => {
+  //   fetch('http://10.0.2.2:3000/ecommerce/login', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       email: email,
+  //       password: password,
+  //     }),
+  //   })
+  //     .then(Response => Response.json())
+  //     .then(data => {
+  //       console.log(data);
+  //       // navigation.navigate('TabNavigation');
+  //     });
+  // };
+
+  // This Function is use to send request to the server and check the login details in the server and database.
+  async function fetchUserDetails() {
+    const loginResponse = await axios.post(
+      'http://10.0.2.2:3000/ecommerce/login',
+      {
         email: email,
         password: password,
-      }),
-    })
-      .then(Response => Response.json())
-      .then(data => {
-        console.log(data);
-        // navigation.navigate('TabNavigation');
-      });
-  };
+      },
+    );
+    console.log('Login Response', loginResponse.data);
+  }
 
   return (
     // This is the Scroll View which is use to give the Scroll Environment to the Content
@@ -158,7 +171,9 @@ const Login = ({navigation}) => {
           </View>
 
           {/* --- This is the Button of the signIn which is use for Authnticate the User and Run a Function --- */}
-          <TouchableOpacity onPress={sendCred} style={styles.loginSignInButton}>
+          <TouchableOpacity
+            onPress={fetchUserDetails}
+            style={styles.loginSignInButton}>
             <Text style={{color: '#111', textAlign: 'center'}}>Sign in</Text>
           </TouchableOpacity>
           <Text
