@@ -144,7 +144,13 @@
 
 // This file use the Backend Node(Js) to map the data and display the Data using the Axios
 import React, {useState, useEffect} from 'react';
-import {View, TouchableOpacity, ScrollView, Text} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  ScrollView,
+  Text,
+  StyleSheet,
+} from 'react-native';
 import ProductListContain from './productListContain';
 import axios from 'axios';
 
@@ -152,7 +158,7 @@ const ProductList = ({navigation, route}) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null); // add error state
-console.log("",products);
+  console.log('', products);
   useEffect(() => {
     axios
       .get('http://10.0.2.2:3000/ecommerce/productDetails')
@@ -181,7 +187,9 @@ console.log("",products);
   return (
     <ScrollView>
       {isLoading ? (
-        <Text>Loading...</Text>
+        <View style={styles.LoadingComponents}>
+          <Text style={styles.Loading}>Loading...</Text>
+        </View>
       ) : error ? (
         <Text>{error}</Text> // show error message if error state is not null
       ) : (
@@ -203,3 +211,16 @@ console.log("",products);
 };
 
 export default ProductList;
+
+const styles = StyleSheet.create({
+  LoadingComponents:{
+    justifyContent:"center",
+    alignItems:"center",
+    
+  },
+  Loading: {
+    color: 'red',
+    marginTop: 400,
+    fontSize: 50
+  },
+});
