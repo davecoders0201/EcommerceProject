@@ -152,7 +152,7 @@ const ProductList = ({navigation, route}) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null); // add error state
-
+console.log("",products);
   useEffect(() => {
     axios
       .get('http://10.0.2.2:3000/ecommerce/productDetails')
