@@ -25,13 +25,13 @@
 //   return id === element.id;
 // });
 
-//   // This is the dipatch which uses a useDispatch when the cart products are added this will add the product in the store
-//   const dispatch = useDispatch();
+// // This is the dipatch which uses a useDispatch when the cart products are added this will add the product in the store
+// const dispatch = useDispatch();
 
-//   const addItem = selectedProduct => {
-//     dispatch(addItemToCart(selectedProduct));
-//     Alert.alert('Item Added to the cart');
-//   };
+// const addItem = selectedProduct => {
+//   dispatch(addItemToCart(selectedProduct));
+//   Alert.alert('Item Added to the cart');
+// };
 
 //   console.log(id);
 //   return (
@@ -155,6 +155,7 @@ const ProductDetails = ({route, navigation}) => {
       .get('http://10.0.2.2:3000/ecommerce/productDetails')
       .then(response => {
         // console.log(response.data); // check response data
+
         if (Array.isArray(response.data.result)) {
           // verify that response data is an array
           setProducts(response.data.result);
@@ -170,11 +171,23 @@ const ProductDetails = ({route, navigation}) => {
         setIsLoading(false);
       });
   }, []);
+
+  // This is the find method which is use to find the products from the selected id and compare the element id from the id in the API and display the current Data as per the Id
   const selectedProducts = products.find(element => {
     // console.log("elementID:::",element);
     return id === element._id;
   });
   console.log('Selected Product', selectedProducts);
+
+  // This is the dipatch which uses a useDispatch when the cart products are added this will add the product in the store
+  const dispatch = useDispatch();
+
+  //This is the redux ToolKit which is the use to add the selected items to the cart and diplay the single products.
+  const addItem = selectedProducts => {
+    dispatch(addItemToCart(selectedProducts));
+    Alert.alert('Item Added to the cart');
+  };
+
   // This is find function which is use to find the data according to the id
   if (isLoading) {
     return (
@@ -191,6 +204,8 @@ const ProductDetails = ({route, navigation}) => {
   if (!selectedProducts) {
     return <Text>Product not found.</Text>;
   }
+
+  //This is the main return function which display the Whole pages function perform the functions.
   return (
     // This is the ScrollView Content which give the Scroll Effect to the Content
     <ScrollView>
@@ -213,7 +228,7 @@ const ProductDetails = ({route, navigation}) => {
 
           <TouchableOpacity
             style={styles.button}
-            onPress={() => addItem(selectedProduct)}>
+            onPress={() => addItem(selectedProducts)}>
             <Text style={styles.buttonText}>Add to cart</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buybutton}>
