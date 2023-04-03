@@ -1,8 +1,6 @@
 import {StyleSheet, Text, Image, View, Pressable} from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {useSelector, useDispatch} from 'react-redux';
-import {removeItemFromCart} from '../redux/action/Actions';
 
 const CartItem = ({image, title, price, route}) => {
   const id = route.params.productId;
