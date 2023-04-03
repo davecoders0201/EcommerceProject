@@ -177,7 +177,11 @@ const ProductDetails = ({route, navigation}) => {
   console.log('Selected Product', selectedProducts);
   // This is find function which is use to find the data according to the id
   if (isLoading) {
-    return <ActivityIndicator />;
+    return (
+      <View style={[styles.loadingContainer, styles.horizontal]}>
+        <ActivityIndicator size="large" color="#f0c14b" />
+      </View>
+    );
   }
 
   if (error) {
@@ -228,6 +232,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
   },
   image: {
     width: '100%',
