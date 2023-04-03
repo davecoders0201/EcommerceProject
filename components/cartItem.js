@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const CartItem = ({image, title, price, route}) => {
-  const id = route.params.productId;
   const [quantity, setQuantity] = useState(1);
   const [subtotal, setSubtotal] = useState(price);
 
