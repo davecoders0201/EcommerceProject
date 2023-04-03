@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector, useDispatch} from 'react-redux';
 
-const CartItem = ({img, title, price}) => {
+const CartItem = ({image, title, price}) => {
   const [quantity, setQuantity] = useState(1);
   const [subtotal, setSubtotal] = useState(price);
 
@@ -31,7 +31,7 @@ const CartItem = ({img, title, price}) => {
               backgroundColor: 'white',
             }}
             source={{
-              uri: img,
+              uri: image,
             }}
           />
         </View>

@@ -87,7 +87,7 @@ const CartScreen = ({navigation}) => {
             key={item.id}
             title={item.title}
             price={item.price}
-            img={item.img}
+            image={item.image}
           />
         ))}
       </ScrollView>
