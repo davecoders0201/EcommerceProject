@@ -35,7 +35,8 @@
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.5",
     "react-style-proptype": "^3.2.2",
-    "redux": "^4.2.1"
+    "redux": "^4.2.1",
+    "stripe": "^11.17.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
