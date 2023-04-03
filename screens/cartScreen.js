@@ -84,7 +84,7 @@ const CartScreen = ({navigation}) => {
         {/* --- This is the Map function which is use to display the Items one by one --- */}
         {items.map(item => (
           <CartItem
-            key={item.id}
+            key={item._id}
             title={item.title}
             price={item.price}
             image={item.image}

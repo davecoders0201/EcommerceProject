@@ -2,8 +2,10 @@ import {StyleSheet, Text, Image, View, Pressable} from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector, useDispatch} from 'react-redux';
+import {removeItemFromCart} from '../redux/action/Actions';
 
-const CartItem = ({image, title, price}) => {
+const CartItem = ({image, title, price, route}) => {
+  const id = route.params.productId;
   const [quantity, setQuantity] = useState(1);
   const [subtotal, setSubtotal] = useState(price);
 
@@ -16,6 +18,7 @@ const CartItem = ({image, title, price}) => {
       setQuantity(quantity - 1);
     }
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.topCont}>
@@ -53,7 +56,7 @@ const CartItem = ({image, title, price}) => {
           </Pressable>
         </View>
         <View style={styles.actionCont}>
-          <Pressable style={styles.btnCont} onPress={{}}>
+          <Pressable style={styles.btnCont}>
             <Text>Delete</Text>
           </Pressable>
           <Pressable style={styles.btnCont}>
