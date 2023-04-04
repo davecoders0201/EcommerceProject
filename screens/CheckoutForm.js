@@ -1,111 +1,87 @@
-import React, {useState, useEffect} from 'react';
-import {CardField, useStripe} from '@stripe/stripe-react-native';
+import React, {useState} from 'react';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import axios from 'axios';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import Stripe from '@stripe/react-stripe-js';
+import {
+  StripeProvider,
+  CardField,
+  useStripe,
+} from '@stripe/stripe-react-native';
 
-const CheckoutForm = () => {
-  const {stripe, confirmPayment} = useStripe();
-  const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null); // change 'stripe' to 'useStripe()'
+const PaymentScreen = () => {
+  const [paymentAmount, setPaymentAmount] = useState('');
+  const [paymentId, setPaymentId] = useState(null);
+  const [cardToken, setCardToken] = useState(null);
+  const [processingPayment, setProcessingPayment] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
 
-  useEffect(() => {
-    axios
-      .post('http://10.0.2.2:3000/ecommerce/paymentDetails')
-      .then(response => {
-        console.log(response.data); // check response data
+  const {confirmPayment} = useStripe();
 
-        if (Array.isArray(response.data.result)) {
-          // verify that response data is an array
-          setCards(response.data.result);
-          setIsLoading(false);
-        } else {
-          setError('Response data is not an array.');
-          setIsLoading(false);
-        }
-      })
-      .catch(error => {
-        console.error(error);
-        setError(error.message); // set error state with error message
-        setIsLoading(false);
-      });
-  }, []);
+  const handlePayment = async () => {
+    setProcessingPayment(true);
 
-  const handleCard = async () => {
-    const selectedCard = cards.find(card => card._id === selectedCard);
-
-    console.log('Selected Card:', selectedCard);
-
-    if (!stripe) {
-      console.log('Stripe not loaded');
-      return;
-    }
     try {
-      const {paymentIntent} = stripe.confirmPayment({
-        clientSecret: selectedCard.clientSecret,
-        paymentMethodId: selectedCard.paymentMethodId,
-      });
-
-      console.log('Payment successful:', paymentIntent);
-    } catch (e) {
-      console.log('Error while processing payment:', e);
-    }
-    try {
-      const paymentIntent = await stripe.paymentIntents.capture(
-        paymentIntentId,
+      const response = await axios.post(
+        'http://10.0.2.2:3000/ecommerce/paymentDetails',
       );
+      const paymentData = response.data.result;
+      setPaymentId(paymentData._id);
+    } catch (error) {
+      console.error(error);
+    }
 
-      console.log('Payment captured:', paymentIntent);
-    } catch (e) {
-      console.log('Error while processing payment:', e);
+    const {error, paymentMethod} = await confirmPayment(cardToken, {
+      type: 'Card',
+    });
+
+    if (error) {
+      console.error(error);
+      setProcessingPayment(false);
+    } else {
+      setProcessingPayment(false);
+      setPaymentSuccess(true);
     }
   };
-
+  const handleCardFieldChange = ({complete, valid, values}) => {
+    if (complete && valid) {
+      setCardToken(values);
+    }
+  };
   return (
-    <View>
-      <CardField
-        postalCodeEnabled={false}
-        placeholders={{
-          number: '4242 4242 4242 4242',
-        }}
-        cardStyle={{
-          backgroundColor: '#FFFFFF',
-          textColor: '#000000',
-        }}
-        style={{
-          width: '100%',
-          height: 50,
-          marginVertical: 30,
-        }}
-        onCardChange={cardDetails => {
-          console.log('cardDetails', cardDetails);
-        }}
-        onFocus={focusedField => {
-          console.log('focusField', focusedField);
-        }}
-      />
-      <TouchableOpacity onPress={handleCard} style={styles.payContainer}>
-        <Text style={styles.payText}>Pay</Text>
-      </TouchableOpacity>
-    </View>
+    <StripeProvider publishableKey="pk_test_51MOxakSBrlmuoaW8d4n4QEG3OuCl7lPniqQbLnhuRYAC4fGR9EdVDpvum8sct7TvAy2cnJBoWYLoEMDYWo6JRPfu00vCnGACp0">
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        {paymentSuccess ? (
+          <Text>Your payment was successful!</Text>
+        ) : (
+          <>
+            <TextInput
+              placeholder="Enter payment amount"
+              value={paymentAmount}
+              onChangeText={setPaymentAmount}
+              keyboardType="numeric"
+              style={{marginBottom: 16}}
+            />
+            <CardField
+              postalCodeEnabled={false}
+              onCardChange={handleCardFieldChange}
+              style={{width: '100%', height: 50, marginBottom: 16}}
+            />
+            <TouchableOpacity
+              onPress={handlePayment}
+              disabled={processingPayment}
+              style={{
+                backgroundColor: processingPayment ? '#ccc' : '#007bff',
+                paddingVertical: 8,
+                paddingHorizontal: 16,
+                borderRadius: 4,
+              }}>
+              <Text style={{color: '#fff', fontWeight: 'bold'}}>
+                {processingPayment ? 'Processing payment...' : 'Make payment'}
+              </Text>
+            </TouchableOpacity>
+          </>
+        )}
+      </View>
+    </StripeProvider>
   );
 };
-
-export default CheckoutForm;
-
-const styles = StyleSheet.create({
-  payContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    borderRadius: 10,
-    marginVertical: 10,
-  },
-  payText: {
-    fontFamily: 'bold',
-    padding: 10,
-    fontSize: 20,
-    textAlign: 'center',
-  },
-});
+export default PaymentScreen;
