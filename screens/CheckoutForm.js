@@ -18,20 +18,24 @@ const PaymentScreen = () => {
 
   const handlePayment = async () => {
     setProcessingPayment(true);
-
     try {
       const response = await axios.post(
         'http://10.0.2.2:3000/ecommerce/paymentDetails',
       );
-      const paymentData = response.data.result;
-      setPaymentId(paymentData._id);
+      const paymentData = response.data.card;
+      setPaymentId(paymentData.id);
+      console.log('id::::', paymentData.id);
     } catch (error) {
       console.error(error);
     }
 
-    const {error, paymentMethod} = await confirmPayment(cardToken, {
-      type: 'Card',
-    });
+    const {error, paymentMethod} = await confirmPayment(
+      JSON.stringify(cardToken),
+      {
+        type: 'Card',
+        paymentMethodType: 'Card',
+      },
+    );
 
     if (error) {
       console.error(error);
@@ -41,25 +45,19 @@ const PaymentScreen = () => {
       setPaymentSuccess(true);
     }
   };
-  const handleCardFieldChange = ({complete, valid, values}) => {
-    if (complete && valid) {
-      setCardToken(values);
-    }
+
+  const handleCardFieldChange = complete => {
+    setCardToken(complete);
   };
+  console.log('Card Token:::', cardToken);
+
   return (
-    <StripeProvider publishableKey="pk_test_51MOxakSBrlmuoaW8d4n4QEG3OuCl7lPniqQbLnhuRYAC4fGR9EdVDpvum8sct7TvAy2cnJBoWYLoEMDYWo6JRPfu00vCnGACp0">
+    <StripeProvider publishableKey="pk_test_51MnbtkSI6t5fguBrmy2ra7DzScbuIFLeY6dNVuEUEuw5xeBeHrG1zL99iyAaGCWuR5MJ7826jrXUptevBxAcn5lo00NdhrhOI5">
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         {paymentSuccess ? (
           <Text>Your payment was successful!</Text>
         ) : (
           <>
-            <TextInput
-              placeholder="Enter payment amount"
-              value={paymentAmount}
-              onChangeText={setPaymentAmount}
-              keyboardType="numeric"
-              style={{marginBottom: 16}}
-            />
             <CardField
               postalCodeEnabled={false}
               onCardChange={handleCardFieldChange}
@@ -67,7 +65,7 @@ const PaymentScreen = () => {
             />
             <TouchableOpacity
               onPress={handlePayment}
-              disabled={processingPayment}
+              disabled={!cardToken || processingPayment} // disable button if cardToken is null/undefined or if payment is processing
               style={{
                 backgroundColor: processingPayment ? '#ccc' : '#007bff',
                 paddingVertical: 8,
@@ -84,4 +82,5 @@ const PaymentScreen = () => {
     </StripeProvider>
   );
 };
+
 export default PaymentScreen;

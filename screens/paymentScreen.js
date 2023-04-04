@@ -8,10 +8,15 @@ const PUBLIC_KEY =
   'pk_test_51MOxakSBrlmuoaW8d4n4QEG3OuCl7lPniqQbLnhuRYAC4fGR9EdVDpvum8sct7TvAy2cnJBoWYLoEMDYWo6JRPfu00vCnGACp0';
 const stripeTestPromise = loadStripe(PUBLIC_KEY);
 
+const options = {
+  // passing the client secret obtained from the server
+  clientSecret: '{{CLIENT_SECRET}}',
+};
+
 // This is the main function of the file
 const PaymentScreen = () => {
   return (
-    <Elements stripe={stripeTestPromise}>
+    <Elements stripe={stripeTestPromise} options={options}>
       <CheckoutForm />
     </Elements>
   );
