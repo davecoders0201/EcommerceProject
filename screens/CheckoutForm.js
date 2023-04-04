@@ -22,7 +22,7 @@ const PaymentScreen = () => {
       const response = await axios.post(
         'http://10.0.2.2:3000/ecommerce/paymentDetails',
       );
-      const paymentData = response.data.card;
+      const paymentData = response.data;
       setPaymentId(paymentData.id);
       console.log('id::::', paymentData.id);
     } catch (error) {
