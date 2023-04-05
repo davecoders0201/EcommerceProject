@@ -5,7 +5,6 @@ import MenuScreen from '../screens/menuScreen';
 import HomeScreen from '../screens/homeScreen';
 import ProfileScreen from '../screens/profileScreen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import OrderScreen from './../screens/orderScreen';
 
 const TabNavigation = () => {
   const Tab = createBottomTabNavigator();
