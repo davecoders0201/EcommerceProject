@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import axios from 'axios';
 import {
@@ -7,7 +7,7 @@ import {
   useStripe,
 } from '@stripe/stripe-react-native';
 
-const PaymentScreen = () => {
+const PaymentScreen = ({navigation}) => {
   const [paymentAmount, setPaymentAmount] = useState('');
   const [paymentId, setPaymentId] = useState(null);
   const [cardToken, setCardToken] = useState(null);
@@ -15,6 +15,9 @@ const PaymentScreen = () => {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   const {confirmPayment} = useStripe();
+  useEffect(() => {
+    console.log('PaymentId:::', paymentId);
+  }, [paymentId]);
 
   const handlePayment = async () => {
     setProcessingPayment(true);
@@ -23,16 +26,17 @@ const PaymentScreen = () => {
       .then(response => {
         const paymentData = response.data;
         setPaymentId(paymentData);
-        console.log('id::::', paymentData);
+        console.log('paymentData::::', paymentData);
+      })
+      .catch(error => {
+        console.error(error);
+        setError(error.message); // set error state with error message
       });
 
-    const {error, paymentMethod} = confirmPayment(
-      JSON.stringify(cardToken === paymentId),
-      {
-        type: 'Card',
-        paymentMethodType: 'Card',
-      },
-    );
+    const {error, paymentMethod} = confirmPayment(JSON.stringify(paymentId), {
+      type: 'Card',
+      paymentMethodType: 'Card',
+    });
 
     if (error) {
       console.error(error);
