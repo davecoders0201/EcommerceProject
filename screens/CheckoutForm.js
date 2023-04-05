@@ -18,19 +18,16 @@ const PaymentScreen = () => {
 
   const handlePayment = async () => {
     setProcessingPayment(true);
-    try {
-      const response = await axios.post(
-        'http://10.0.2.2:3000/ecommerce/paymentDetails',
-      );
-      const paymentData = response.data;
-      setPaymentId(paymentData.id);
-      console.log('id::::', paymentData.id);
-    } catch (error) {
-      console.error(error);
-    }
+    const res = await axios
+      .post('http://10.0.2.2:3000/ecommerce/paymentDetails')
+      .then(response => {
+        const paymentData = response.data;
+        setPaymentId(paymentData);
+        console.log('id::::', paymentData);
+      });
 
-    const {error, paymentMethod} = await confirmPayment(
-      JSON.stringify(cardToken),
+    const {error, paymentMethod} = confirmPayment(
+      JSON.stringify(cardToken === paymentId),
       {
         type: 'Card',
         paymentMethodType: 'Card',
@@ -49,7 +46,7 @@ const PaymentScreen = () => {
   const handleCardFieldChange = complete => {
     setCardToken(complete);
   };
-  console.log('Card Token:::', cardToken);
+  // console.log('Card Token:::', cardToken);
 
   return (
     <StripeProvider publishableKey="pk_test_51MnbtkSI6t5fguBrmy2ra7DzScbuIFLeY6dNVuEUEuw5xeBeHrG1zL99iyAaGCWuR5MJ7826jrXUptevBxAcn5lo00NdhrhOI5">
