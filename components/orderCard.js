@@ -1,6 +1,5 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
-import {OrderData} from '../data/ProfileData';
 
 const OrderCard = ({image}) => {
   return (
