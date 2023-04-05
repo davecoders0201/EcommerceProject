@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Login from './screens/login';
@@ -14,6 +14,7 @@ import ProductDetailsTablets from './screens/productDetailsTablets';
 import PaymentScreen from './screens/paymentScreen';
 import ProductDetailsLaptop from './screens/productDetailsLaptop';
 import ProductDetailsMonitor from './screens/productDetailsMonitor';
+import OrderScreen from './screens/orderScreen';
 const Stack = createStackNavigator();
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           />
           <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
           <Stack.Screen name="TabNavigation" component={TabNavigation} />
+          <Stack.Screen name="orderScreen" component={OrderScreen} />
         </Stack.Navigator>
       </Provider>
     </NavigationContainer>

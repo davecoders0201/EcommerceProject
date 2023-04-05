@@ -61,7 +61,9 @@ const ProfileScreen = ({navigation}) => {
           <Text style={styles.orderText}>Your Orders</Text>
           <Text
             style={styles.seeall}
-            onPress={() => {navigation.navigate('OrderScreen')}}>
+            onPress={() => {
+              navigation.navigate('orderScreen');
+            }}>
             See all
           </Text>
         </View>
@@ -147,7 +149,7 @@ const styles = StyleSheet.create({
   },
   seeall: {
     paddingTop: 5,
-    paddingRight:10,
+    paddingRight: 10,
     color: 'green',
     fontSize: 16,
   },
