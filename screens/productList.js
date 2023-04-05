@@ -213,14 +213,13 @@ const ProductList = ({navigation, route}) => {
 export default ProductList;
 
 const styles = StyleSheet.create({
-  LoadingComponents:{
-    justifyContent:"center",
-    alignItems:"center",
-    
+  LoadingComponents: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   Loading: {
     color: 'red',
     marginTop: 400,
-    fontSize: 50
+    fontSize: 50,
   },
 });
