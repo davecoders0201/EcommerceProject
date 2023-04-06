@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch, useSelector} from 'react-redux';
 import {removeItemFromCart} from '../redux/action/Actions';
 
-const CartItem = ({image, title, price, route, index}) => {
+const CartItem = ({image, title, price, index}) => {
   const items = useSelector(state => state);
   const [quantity, setQuantity] = useState(1);
   const [subtotal, setSubtotal] = useState(price);
