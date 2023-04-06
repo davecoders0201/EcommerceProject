@@ -88,7 +88,7 @@ const Register = ({navigation}) => {
         navigation.navigate('Login');
       })
       .catch(error => {
-        Alert.alert('Please Enter Proper Credentials');
+        Alert.alert('Email Already in Use');
         console.log('Register Error:', error);
       });
   }
