@@ -155,7 +155,6 @@ const ProductDetails = ({route, navigation}) => {
       .get('http://10.0.2.2:3000/ecommerce/productDetails')
       .then(response => {
         // console.log(response.data); // check response data
-
         if (Array.isArray(response.data.result)) {
           // verify that response data is an array
           setProducts(response.data.result);
