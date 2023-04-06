@@ -12,6 +12,7 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+// This import is use for the firebase functionality
 // import auth from '@react-native-firebase/auth';
 import axios from 'axios';
 
