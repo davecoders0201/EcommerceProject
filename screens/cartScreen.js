@@ -10,7 +10,7 @@ import React, {useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CartItem from './../components/cartItem';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {useIsFocused} from '@react-navigation/native';
 
 // This is the main Function of the CartScreen and it is executed in every decent manner
@@ -21,6 +21,10 @@ const CartScreen = ({navigation}) => {
   const isFocused = useIsFocused();
   const [cartCount, setCartCount] = useState(items.length);
   console.log(items);
+  useEffect(() => {
+    setCartCount(items.length);
+    console.log('Items count::', items.length);
+  }, [items]);
 
   // This is the useEffect and executed when the page is diplayed
   useEffect(() => {
