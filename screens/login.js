@@ -93,10 +93,12 @@ const Login = ({navigation}) => {
         password: password,
       })
       .then(response => {
-        if (response) {
+        if (response && email && password) {
           Alert.alert('Login Successfull');
           console.log('Login Response', response.data);
           navigation.navigate('TabNavigation');
+        } else {
+          Alert.alert('Please enter Credentials');
         }
       })
       .catch(error => {
