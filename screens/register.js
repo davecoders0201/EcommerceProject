@@ -75,16 +75,22 @@ const Register = ({navigation}) => {
 
   // This function is use to save the register data in the database using the axios in the node Js
   async function fetchUserDetails() {
-    const userResponse = await axios.post(
-      'http://10.0.2.2:3000/ecommerce/register',
-      {
+    const userResponse = await axios
+      .post('http://10.0.2.2:3000/ecommerce/register', {
         your_name: name,
         email: email,
         password: password,
         reenter_password: reEnterPassword,
-      },
-    );
-    console.log('Register User', userResponse.data.result);
+      })
+      .then(response => {
+        Alert.alert('Registration Successfull');
+        console.log('Register User', response.data.result);
+        navigation.navigate('Login');
+      })
+      .catch(error => {
+        Alert.alert('Please Enter Proper Credentials');
+        console.log('Register Error:', error);
+      });
   }
 
   return (

@@ -8,6 +8,7 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
+  Alert,
 } from 'react-native';
 import axios from 'axios';
 
@@ -86,14 +87,22 @@ const Login = ({navigation}) => {
 
   // This Function is use to send request to the server and check the login details in the server and database.
   async function fetchUserDetails() {
-    const loginResponse = await axios.post(
-      'http://10.0.2.2:3000/ecommerce/login',
-      {
+    const loginResponse = await axios
+      .post('http://10.0.2.2:3000/ecommerce/login', {
         email: email,
         password: password,
-      },
-    );
-    console.log('Login Response', loginResponse.data);
+      })
+      .then(response => {
+        if (response) {
+          Alert.alert('Login Successfull');
+          console.log('Login Response', response.data);
+          navigation.navigate('TabNavigation');
+        }
+      })
+      .catch(error => {
+        Alert.alert('Login Failed, Please Enter Correct Credentials');
+        console.log(error);
+      });
   }
 
   return (
