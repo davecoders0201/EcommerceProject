@@ -96,7 +96,7 @@ const CartScreen = ({navigation}) => {
           <Text
             style={styles.btnText}
             onPress={() => navigation.navigate('PaymentScreen')}>
-            Proceed to buy (2 items)
+            Proceed to buy ({cartCount} items)
           </Text>
         </Pressable>
       </View>
