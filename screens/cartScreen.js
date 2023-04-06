@@ -11,13 +11,15 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CartItem from './../components/cartItem';
 import {useSelector} from 'react-redux';
-import {useStripe} from '@stripe/stripe-react-native';
+import {useIsFocused} from '@react-navigation/native';
 
 // This is the main Function of the CartScreen and it is executed in every decent manner
 const CartScreen = ({navigation}) => {
   const items = useSelector(state => state);
   const [quantity, setQuantity] = useState(1);
   const [subtotal, setSubtotal] = useState(0);
+  const isFocused = useIsFocused();
+  const [cartCount, setCartCount] = useState(items.length);
   console.log(items);
 
   // This is the useEffect and executed when the page is diplayed
@@ -44,14 +46,28 @@ const CartScreen = ({navigation}) => {
   });
 
   // This is the Second useEffect which is executed the User increase the Count of the Products
+  // useEffect(() => {
+  //   let total = 0;
+  //   items.forEach(item => {
+  //     total += item.price;
+  //   });
+  //   setSubtotal(total);
+  // });
+
   useEffect(() => {
     let total = 0;
     items.forEach(item => {
       total += item.price;
     });
     setSubtotal(total);
-  });
+    setCartCount(items.length);
+  }, [items]);
 
+  useEffect(() => {
+    if (isFocused) {
+      setCartCount(items.length);
+    }
+  }, [isFocused]);
   console.log('Items', items);
   console.log(subtotal);
   return (
