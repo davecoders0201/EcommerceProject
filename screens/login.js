@@ -94,15 +94,18 @@ const Login = ({navigation}) => {
       })
       .then(response => {
         if (response && email && password) {
-          Alert.alert('Login Successfull');
           console.log('Login Response', response.data);
           navigation.navigate('TabNavigation');
-        } else {
-          Alert.alert('Please enter Credentials');
         }
       })
       .catch(error => {
-        Alert.alert('Login Failed, Please Enter Correct Credentials');
+        if (!email) {
+          Alert.alert('Please Enter Email');
+        } else if (!password) {
+          Alert.alert('Please Enter Password');
+        } else {
+          Alert.alert('Invalid Credentials');
+        }
         console.log(error);
       });
   }
