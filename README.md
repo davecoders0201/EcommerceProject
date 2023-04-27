@@ -1,6 +1,6 @@
 # This is the Ecommerce App in the React Native
 
-This Application was created with NodeJs Backend. This is the FullStack Application 
+This Application was created with NodeJs Backend. This is the FullStack Application
 
 ## Introduction
 
@@ -44,13 +44,20 @@ React Native is an open-source mobile application framework created by Facebook.
 ## How to run the app ?
 
 1. Open the project in your favorite text editor
-2. Open your terminal or cmd and type
+
+2. If you previously installed a global react-native-cli package, please remove it as it may cause unexpected issues:
+
+```
+npm uninstall -g react-native-cli @react-native-community/cli
+```
+
+3. Open your terminal or cmd and type
 
 ```
 npm install
 ```
 
-1. And the last just type in your terminal or cmd
+4. And the last just type in your terminal or cmd
 
 ```
 react-native run-android
