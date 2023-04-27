@@ -1,6 +1,6 @@
-# This is the Notes in the React Native
+# This is the Ecommerce App in the React Native
 
-This Application was Simply created for the Pratice
+This Application was created with NodeJs Backend. This is the FullStack Application 
 
 ## Introduction
 
@@ -25,10 +25,15 @@ React Native is an open-source mobile application framework created by Facebook.
 ## Features
 
 <ul>
-  <li>AsyncStorage Used</li>
-  <li>Add/Edit/Delete Note</li>
-  <li>RealTime CreatedAt time of Every note</li>
-  <li>Clear Search Functionality</li>
+  <li>API Integration</li>
+  <li>Firebase Authentication</li>
+  <li>Login/Registration Functionality</li>
+  <li>Stripe Payment Integration</li>
+  <li>NodeJs Backend added</li>
+  <li>Products Listing</li>
+  <li>Products Details</li>
+  <li>Add to cart / Counting Cart</li>
+  <li>MongoDB Integration</li>
 </ul>
 
 ## Requirements
