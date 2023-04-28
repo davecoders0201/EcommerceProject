@@ -72,31 +72,31 @@ be sure if you connected with a device on debugging mode or use the emulator on 
 
 ### Login/Registration Page
 
-<Image src="ScreenShots/Login.png" widht=500 height=500/> <Image src="ScreenShots/Reg.png" widht=500 height=500/>
+<Image src="Screenshots/Login.png" widht=500 height=500/> <Image src="Screenshots/Reg.png" widht=500 height=500/>
 
 ### Home Page
 
-<Image src="ScreenShots/Home.png" widht=500 height=500>
+<Image src="Screenshots/Home.png" widht=500 height=500>
 
 ### Product Listing Page
 
-<Image src="ScreenShots/Productlist.png" widht=500 height=500>
+<Image src="Screenshots/Productlist.png" widht=500 height=500>
 
 ### Product Detailing Page
 
-<Image src="ScreenShots/productdetail.png" widht=500 height=500>
+<Image src="Screenshots/productdetail.png" widht=500 height=500>
 
 ### Profile Page
 
-<Image src="ScreenShots/profile.png" widht=500 height=500>
+<Image src="Screenshots/profile.png" widht=500 height=500>
 
 ### Cart Functionality
 
-<Image src="ScreenShots/cart.png" widht=500 height=500>
+<Image src="Screenshots/cart.png" widht=500 height=500>
 
 ### Menu Page
 
-<Image src="ScreenShots/menu.png" widht=500 height=500>
+<Image src="Screenshots/menu.png" widht=500 height=500>
 
 ## Authors
 
