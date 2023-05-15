@@ -41,7 +41,6 @@ export const devicesDealData = [
     img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img21/PC/Computers/GW/DBQC/D21343116_IN_CEPC_BAU_GW_graphics_March21_dbqc0.5x_6._SY116_CB655805757_.jpg',
     description:
       'This is the Tablet which is the 8 core Processor in the Tablet',
-
     price: 3000,
   },
   {
@@ -49,7 +48,6 @@ export const devicesDealData = [
     title: 'Laptops',
     img: 'https://images-eu.ssl-images-amazon.com/images/G/31/img21/PC/Computers/GW/DBQC/D21343116_IN_CEPC_BAU_GW_graphics_March21_dbqc0.5x_7._SY116_CB655805757_.jpg',
     description: 'This is the laptop with the Felxible Functionality',
-
     price: 1000,
   },
   {
